@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31613.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiWeb", "ApiWeb\ApiWeb.csproj", "{6667EDA5-F302-47E2-8253-C46D1AACA9C4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6667EDA5-F302-47E2-8253-C46D1AACA9C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6667EDA5-F302-47E2-8253-C46D1AACA9C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6667EDA5-F302-47E2-8253-C46D1AACA9C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6667EDA5-F302-47E2-8253-C46D1AACA9C4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EEF38ADA-0DF2-4A17-8E1E-3FEC8AAF1B41}
+	EndGlobalSection
+EndGlobal
