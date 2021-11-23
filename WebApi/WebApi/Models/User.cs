@@ -12,5 +12,7 @@ namespace WebApi.Models
         public string Name { get; set; }
 
         public string Position { get; set; }
+
+        public DateTime StartDate { get; set; }
     }
 }
