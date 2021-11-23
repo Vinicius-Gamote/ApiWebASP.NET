@@ -40,7 +40,9 @@ namespace ApiWeb.Controllers
 
             var user = new User
             {
-                Name = model.Name
+                Name = model.Name,
+                Position = model.Position,
+                Birthday = model.Birthday
             };
 
             try
@@ -72,7 +74,9 @@ namespace ApiWeb.Controllers
 
             try
             {
-                user.Name = model.Name;
+                user.Name = model.Name,
+                user.Position = model.Position,
+                user.Birthday = model.Birthday;
 
                 context.User.Update(user);
                 await context.SaveChangesAsync();
