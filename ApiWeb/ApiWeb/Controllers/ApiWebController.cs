@@ -55,7 +55,7 @@ namespace ApiWeb.Controllers
 
             catch (Exception e)
             {
-                return BadRequest();
+                return StatusCode(400, e.Message);
             }
 
         }
@@ -74,8 +74,8 @@ namespace ApiWeb.Controllers
 
             try
             {
-                user.Name = model.Name,
-                user.Position = model.Position,
+                user.Name = model.Name;
+                user.Position = model.Position;
                 user.Birthday = model.Birthday;
 
                 context.User.Update(user);
@@ -86,7 +86,7 @@ namespace ApiWeb.Controllers
 
             catch (Exception e)
             {
-                return BadRequest();
+                return StatusCode(400, e.Message);
             }
         }
 
@@ -105,7 +105,7 @@ namespace ApiWeb.Controllers
 
             catch (Exception e)
             {
-                return BadRequest();
+                return StatusCode(400, e.Message);
             }
         }
 
