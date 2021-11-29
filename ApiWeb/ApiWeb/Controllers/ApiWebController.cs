@@ -15,24 +15,21 @@ namespace ApiWeb.Controllers
     [ApiController]
     public class ApiWebController : ControllerBase
     {
-        [HttpGet]
-        [Route("user")]
-        public async Task<IActionResult> GetUsersAsync([FromServices] ApiWebContext context)
+        [HttpGet("user")]
+        public async Task<IActionResult> GetUsersAsync([FromServices] ApiWebContext context, int skip = 0, int take = 10)
         {
-            var users = await context.User.AsNoTracking().ToListAsync();
+            var users = await context.User.AsNoTracking().Skip(skip).Take(take).ToListAsync();
             return Ok(users);
         }
 
-        [HttpGet]
-        [Route("user/{id}")]
+        [HttpGet("user/{id}")]
         public async Task<IActionResult> GetUserByIdAsync([FromServices] ApiWebContext context, [FromRoute] int id)
         {
             var user = await context.User.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
             return user == null ? NotFound() : Ok(user);
         }
 
-        [HttpPost]
-        [Route("user")]
+        [HttpPost("user")]
         public async Task<IActionResult> PostUsersAsync([FromServices] ApiWebContext context, [FromBody] User model)
         {
             if (!ModelState.IsValid)
@@ -60,8 +57,7 @@ namespace ApiWeb.Controllers
 
         }
 
-        [HttpPut]
-        [Route("user/{id}")]
+        [HttpPut("user/{id}")]
         public async Task<IActionResult> PutUsersAsync([FromServices] ApiWebContext context, [FromBody] User model, [FromRoute] int id)
         {
             if (!ModelState.IsValid)
@@ -90,8 +86,7 @@ namespace ApiWeb.Controllers
             }
         }
 
-        [HttpDelete]
-        [Route("user/{id}")]
+        [HttpDelete("user/{id}")]
         public async Task<IActionResult> DeleteUsersAsync([FromServices] ApiWebContext context, [FromRoute] int id)
         {
             var user = await context.User.FirstOrDefaultAsync(x => x.Id == id);
