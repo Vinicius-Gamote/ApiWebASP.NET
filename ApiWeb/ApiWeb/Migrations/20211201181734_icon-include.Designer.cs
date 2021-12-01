@@ -3,14 +3,16 @@ using System;
 using ApiWeb.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ApiWeb.Migrations
 {
     [DbContext(typeof(ApiWebContext))]
-    partial class ApiWebContextModelSnapshot : ModelSnapshot
+    [Migration("20211201181734_icon-include")]
+    partial class iconinclude
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

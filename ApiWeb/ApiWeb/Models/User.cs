@@ -16,5 +16,7 @@ namespace ApiWeb.Models
         public string Position { get; set; }
 
         public DateTime Birthday { get; set; }
+
+        public string UserIcon { get; set; }
     }
 }
