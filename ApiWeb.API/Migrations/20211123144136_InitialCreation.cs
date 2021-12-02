@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ApiWeb.Migrations
+namespace ApiWeb.API.Migrations
 {
     public partial class InitialCreation : Migration
     {

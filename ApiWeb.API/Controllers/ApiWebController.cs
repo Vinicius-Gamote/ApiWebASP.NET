@@ -1,5 +1,5 @@
-﻿using ApiWeb.Data;
-using ApiWeb.Models;
+﻿using ApiWeb.API.Data;
+using ApiWeb.API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 
-namespace ApiWeb.Controllers
+namespace ApiWeb.API.Controllers
 
 {
     [Route("api/[controller]")]

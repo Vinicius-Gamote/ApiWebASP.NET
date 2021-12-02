@@ -5,7 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ApiWeb.Models
+namespace ApiWeb.API.Models
 {
     public class User
     {
