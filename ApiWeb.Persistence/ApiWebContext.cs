@@ -23,7 +23,7 @@ namespace ApiWeb.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) 
         {
-            modelBuilder.Entity<UsersPositions>
+            modelBuilder.Entity<UserPosition>().HasKey(UP => new { UP.PositionId, UP.UserId });
         }
     }
 }

@@ -1,5 +1,6 @@
-﻿using ApiWeb.API.Data;
-using ApiWeb.API.Models;
+﻿using ApiWeb.API;
+using ApiWeb.Domain;
+using ApiWeb.Persistence;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -18,14 +19,14 @@ namespace ApiWeb.API.Controllers
         [HttpGet("user")]
         public async Task<IActionResult> GetUsersAsync([FromServices] ApiWebContext context, int skip = 0, int take = 10)
         {
-            var users = await context.User.AsNoTracking().Skip(skip).Take(take).ToListAsync();
+            var users = await context.Users.AsNoTracking().Skip(skip).Take(take).ToListAsync();
             return Ok(users);
         }
 
         [HttpGet("user/{id}")]
         public async Task<IActionResult> GetUserByIdAsync([FromServices] ApiWebContext context, [FromRoute] int id)
         {
-            var user = await context.User.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
+            var user = await context.Users.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
             return user == null ? NotFound() : Ok(user);
         }
 
@@ -38,14 +39,14 @@ namespace ApiWeb.API.Controllers
             var user = new User
             {
                 Name = model.Name,
-                Position = model.Position,
+                Positions = model.Positions,
                 Birthday = model.Birthday,
                 UserIcon = model.UserIcon
             };
 
             try
             {
-                await context.User.AddAsync(user);
+                await context.Users.AddAsync(user);
                 await context.SaveChangesAsync();
 
                 return Created("v1/user/{user.Id}", user);
@@ -64,7 +65,7 @@ namespace ApiWeb.API.Controllers
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            var user = await context.User.FirstOrDefaultAsync(x => x.Id == id);
+            var user = await context.Users.FirstOrDefaultAsync(x => x.Id == id);
 
             if (user == null)
                 NotFound();
@@ -72,11 +73,11 @@ namespace ApiWeb.API.Controllers
             try
             {
                 user.Name = model.Name;
-                user.Position = model.Position;
+                user.Positions = model.Positions;
                 user.Birthday = model.Birthday;
                 user.UserIcon = model.UserIcon;
 
-                context.User.Update(user);
+                context.Users.Update(user);
                 await context.SaveChangesAsync();
 
                 return Ok(user);
@@ -91,11 +92,11 @@ namespace ApiWeb.API.Controllers
         [HttpDelete("user/{id}")]
         public async Task<IActionResult> DeleteUsersAsync([FromServices] ApiWebContext context, [FromRoute] int id)
         {
-            var user = await context.User.FirstOrDefaultAsync(x => x.Id == id);
+            var user = await context.Users.FirstOrDefaultAsync(x => x.Id == id);
 
             try
             {
-                context.User.Remove(user);
+                context.Users.Remove(user);
                 await context.SaveChangesAsync();
                 return Ok("User Deleted!");
             }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ApiWeb.Domain
 {
-    class UserPosition
+    public class UserPosition
     {
         public int PositionId { get; set; }
 
