@@ -24,6 +24,8 @@ namespace ApiWeb.Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder) 
         {
             modelBuilder.Entity<UserPosition>().HasKey(UP => new { UP.PositionId, UP.UserId });
+
+            modelBuilder.Entity<User>().HasMany(u => u.SocialMedias).WithOne(sm => sm.User).OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
